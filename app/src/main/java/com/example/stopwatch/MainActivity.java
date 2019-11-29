@@ -2,6 +2,8 @@ package com.example.stopwatch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -11,6 +13,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,6 +60,18 @@ public class MainActivity extends AppCompatActivity {
         tvSplash.setTypeface(MRegular);
         tvSubSplash.setTypeface(MLight);
         btnget.setTypeface(MMedium);
+
+        Calendar calender = Calendar.getInstance();
+        calender.set(calender.HOUR_OF_DAY,19);
+        calender.set(calender.MINUTE, 15);
+        calender.set(calender.SECOND,0);
+
+        Intent intent = new Intent(getApplicationContext(), Notification_Receiver.class);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 
     }
 }

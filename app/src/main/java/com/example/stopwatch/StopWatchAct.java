@@ -78,7 +78,7 @@ public class StopWatchAct extends AppCompatActivity {
             }
         });
 
-        
+
 
     }
 
