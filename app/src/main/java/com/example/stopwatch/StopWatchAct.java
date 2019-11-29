@@ -77,9 +77,6 @@ public class StopWatchAct extends AppCompatActivity {
                 timerHere.stop();
             }
         });
-
-
-
     }
 
     private void displayNotification(){

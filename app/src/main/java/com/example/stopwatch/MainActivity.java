@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -62,16 +63,20 @@ public class MainActivity extends AppCompatActivity {
         btnget.setTypeface(MMedium);
 
         Calendar calender = Calendar.getInstance();
-        calender.set(calender.HOUR_OF_DAY,19);
-        calender.set(calender.MINUTE, 15);
-        calender.set(calender.SECOND,0);
+        calender.set(calender.HOUR_OF_DAY,1);
+        calender.set(calender.MINUTE, 13);
+        calender.set(calender.SECOND,30);
 
         Intent intent = new Intent(getApplicationContext(), Notification_Receiver.class);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+//        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calender.getTimeInMillis(), 10000, pendingIntent);
+//        alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime(), 1*60*1000, pendingIntent);
 
+//        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(),
+//                1000 * 60 * 1, pendingIntent);
     }
 }
